@@ -1,20 +1,3 @@
-# pseudocode
-# function stock_picker(array)
-#     array.each do |price|
-#         shiftVal = array[price] + 2
-#         newArray = array.shift(shiftVal)
-#         newArray.each do |endPrice|
-#             profit = endPrice - price
-#             if profit > bestProfit
-#                 bestProfit = profit
-#                 bestProfitBuy = array[price] + 1
-#                 bestProfitSell = array[endPrice] + 1
-#             end
-#         end
-#     end
-#     outputArray = [bestProfitBuy, bestProfitSell]
-# end
-    
 def stock_picker(array)
 
     # default values
@@ -45,3 +28,20 @@ def stock_picker(array)
 end
 
 p stock_picker([17,3,6,9,15,8,6,1,10])
+
+# pseudocode
+# function stock_picker(array)
+#     array.each do |price|
+#         shiftVal = array[price] + 2
+#         newArray = array.shift(shiftVal)
+#         newArray.each do |endPrice|
+#             profit = endPrice - price
+#             if profit > bestProfit
+#                 bestProfit = profit
+#                 bestProfitBuy = array[price] + 1
+#                 bestProfitSell = array[endPrice] + 1
+#             end
+#         end
+#     end
+#     outputArray = [bestProfitBuy, bestProfitSell]
+# end
