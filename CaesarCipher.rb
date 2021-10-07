@@ -1,6 +1,7 @@
 # complete encryption and output to user
 def caesar_cipher(string, shift)
     # split string into array
+    string = string.downcase
     originalArray = string.split("")
 
     # set default values

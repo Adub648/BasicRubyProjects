@@ -1,33 +1,34 @@
+# frozen_string_literal: true
+
 def stock_picker(array)
+  # default values
+  profit = 0
+  bestProfit = 0
+  bestProfitBuy = 0
+  bestProfitSell = 0
 
-    # default values
-    profit = 0
-    bestProfit = 0
-    bestProfitBuy = 0
-    bestProfitSell = 0
+  # iterate through array
+  array.each do |price|
+    # create new array that doesn't include price being tested
+    shiftVal = array.find_index(price)
+    r = 0..shiftVal
+    newArray = array.reject.with_index { |_v, i| r.include?(i) }
+    # check testing price against all other values in array
+    newArray.each do |endPrice|
+      profit = endPrice - price
+      # if found new highest profit, record it's values
+      next unless profit > bestProfit
 
-    # iterate through array
-    array.each do |price|
-        # create new array that doesn't include price being tested
-        shiftVal = array.find_index(price)
-        r = 0..shiftVal
-        newArray = array.reject.with_index { |v, i| r.include?(i) }
-        # check testing price against all other values in array
-        newArray.each do |endPrice|
-            profit = endPrice - price
-            # if found new highest profit, record it's values
-            if profit > bestProfit
-                bestProfit = profit
-                bestProfitBuy = array.find_index(price)
-                bestProfitSell = array.find_index(endPrice)
-            end
-        end
+      bestProfit = profit
+      bestProfitBuy = array.find_index(price)
+      bestProfitSell = array.find_index(endPrice)
     end
-    # create and output final array
-    outputArray = [bestProfitBuy, bestProfitSell]
+  end
+  # create and output final array
+  outputArray = [bestProfitBuy, bestProfitSell]
 end
 
-p stock_picker([17,3,6,9,15,8,6,1,10])
+p stock_picker([17, 3, 6, 9, 15, 8, 6, 1, 10])
 
 # pseudocode
 # function stock_picker(array)
